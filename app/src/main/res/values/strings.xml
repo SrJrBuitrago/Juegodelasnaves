@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Juego de las Naves</string>
+    <string name="Jugar">Jugar</string>
+    <string name="Salir">Salir</string>
+    <string name="VerPuntuaciones">Ver Puntuaciones</string>
+    <string name="Nombre">Nombre:</string>
+</resources>
