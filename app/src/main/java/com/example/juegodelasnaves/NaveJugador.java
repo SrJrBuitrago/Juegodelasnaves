@@ -1,7 +1,8 @@
 package com.example.juegodelasnaves;
 
 import android.content.Context;
-
+//Clase del objeto nave jugador que tiene una variable booleana seleccionado y un entero x_Max para
+//determinar el ancho, además asignamos la imagen
 public class NaveJugador extends GameObject{
     int x_Max;
     boolean seleccionado;

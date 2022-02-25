@@ -3,7 +3,8 @@ package com.example.juegodelasnaves;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
+//Esta clase sirve para indicar que todos los objetos del juego tienen unas propiedades y
+// operaciones comunes, independientemente de las específicas que puedan tener cada uno en particular
 public abstract class GameObject {
     private Bitmap bitmap;
     private int x,y;

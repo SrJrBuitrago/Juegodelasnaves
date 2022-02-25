@@ -23,7 +23,7 @@ public AdaptadorJugador(ArrayList<Jugador> objects, Context ctx, int resource){
 
 }
     // onCreateViewHolder sirve para asignar la vista que hemos creado para cada uno de los items de
-    // nuestro ArrayList<Producto>. La vista es producto_item
+    // nuestro ArrayList<Producto>. La vista es item_jugador
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,10 +32,8 @@ public AdaptadorJugador(ArrayList<Jugador> objects, Context ctx, int resource){
         return new ViewHolder(view);
     }
 
-    // onBindViewHolder nos permite settear el contenido de nuestro ArrayList<Producto> en los text
-    // view que tiene asignados cada uno de nuestros items. Como no puedo meter valores de tipo int
-    // o double en un textView lo que hago es concatenar los valores con un conjunto de carácteres
-    // vacío convirtiendo así el valor de tipo double o int en String sin modificar su valor
+    // onBindViewHolder nos permite settear el contenido de nuestro ArrayList<Jugador> en los text
+    // view que tiene asignados cada uno de nuestros items.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewNombre.setText(jugadores.get(position).getNombreJugador());
@@ -48,6 +46,8 @@ public AdaptadorJugador(ArrayList<Jugador> objects, Context ctx, int resource){
         return jugadores.size();
     }
 
+    // Aqui asignamos los componentes de cada uno de los item que vamos a crear con su variable
+    // correspondiente
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewNombre, textViewPuntuacion;

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.graphics.Rect;
 
 import java.util.Random;
-
+//Esta clase Misil tiene un atributo velocidad para definir la velocidad a la que se va a mover el
+// misil, un Rect colision para detectar colisiones con la nave marciana, un booleano isColision que
+// inicializo a false y se pone true cuando hay una colisión y una variable score para almacenar
+//impactos
 public class Misil extends GameObject{
     int velocidad;
     Rect colision;

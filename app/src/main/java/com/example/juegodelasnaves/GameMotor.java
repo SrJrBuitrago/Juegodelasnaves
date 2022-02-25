@@ -7,7 +7,8 @@ import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
-
+//Viene a ser la activity del juego, obtiene los datos de la Clase Motor y con el método
+// setSystemUiVisibility ponemos la pantalla en modo envolvente fijo ocultando la barra superior
 public class GameMotor extends AppCompatActivity {
     private Motor motor;
     final int tiempoDeJuegoMax =200;

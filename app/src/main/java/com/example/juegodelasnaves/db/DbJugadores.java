@@ -21,8 +21,7 @@ public class DbJugadores extends DbHelper {
         this.context = context;
     }
 
-    /* Método utilizado en el "NuevoActivity" para insertar un producto en la tabla pasada
-       como parámetro (TABLE_PRODUCTOS) */
+    //Metodo para insertar valores en la bbdd
     public long insertarJugador(Jugador jugador) {
 
         long idJugador = 0;
@@ -31,12 +30,12 @@ public class DbJugadores extends DbHelper {
             DbHelper dbHelper = new DbHelper(context);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-            // Guardamos los valores (nombre,cantidad,categoria) que formarán nuestro producto
+            // Guardamos los los valores  de nuestro objeto Jugador
             ContentValues values = new ContentValues();
             values.put("nombreJugador", jugador.getNombreJugador());
             values.put("puntuacion", jugador.getPuntuacionJugador());
-            /* Insertamos los valores guardados en el ContentValues a nuestra tabla y guardamos el id
-               del producto generado por esta inserción en una variable tipo long */
+            // Insertamos los valores en la TABLE_JUGADORES y nos devuelve el id generado por cada
+            //jugador
             idJugador = db.insert(TABLE_JUGADORES, null, values);
         } catch (Exception ex) {
             ex.toString();
@@ -46,8 +45,8 @@ public class DbJugadores extends DbHelper {
     }
 
 
-    /* Método para mostrar un producto y sus detalles de manera independiente en el "VerActivity",
-       mediante un select individual a través del ID recibido con el método getExtras */
+   //Método para obtener un ArrayList<Jugador> jugadores con todos los valores de la TABLE_JUGADORES
+    //obtenidos mediante una query
     public ArrayList<Jugador> verJugador(ArrayList<Jugador> jugadores) {
 
         DbHelper dbHelper = new DbHelper(context);

@@ -13,7 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
-
+//En el MainActivity lo que hacemos es iniciar los componentes, reproducir un sonido el cual solo
+// se va a detener o bien si se acaba este o bien si cambiamos a la activity del juego o salimos de
+// la aplicación, si cambiamos a la activity puntuaciones se sigue reproduciendo. Además tenemos un
+//onClickListener que dependiendo del botón que pulses te lleva a un activity o a otro.
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
         Button inicioJuego, verPuntuaciones, salir;
     SoundPool soundPool;

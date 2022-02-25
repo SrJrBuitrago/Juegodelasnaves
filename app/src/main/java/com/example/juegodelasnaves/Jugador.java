@@ -1,5 +1,5 @@
 package com.example.juegodelasnaves;
-
+//Clase jugador contiene los atributos de la clase, sus constructores y su toString
 public class Jugador {
     int idJugador;
     String nombreJugador;

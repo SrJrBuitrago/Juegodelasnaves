@@ -13,7 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.juegodelasnaves.db.DbJugadores;
 
 import java.util.ArrayList;
-
+//Esta clase puntuaciones sirve para mostrar los resultados de los jugadores almacenados en una base
+// de datos sqlite. Contiene un ArrayList<Jugador> jugadores y un AdaptadorJugador que es un
+// adaptador personalizado y se aplica sobre el RecyclerView recyclerView. Hay un botón salir el
+// cual con el método finish() nos manda al activity de donde venimos
 public class Puntuaciones extends AppCompatActivity implements View.OnClickListener {
     Button bSalir;
     RecyclerView recyclerView;
@@ -29,7 +32,6 @@ public class Puntuaciones extends AppCompatActivity implements View.OnClickListe
         DbJugadores dbJugadores = new DbJugadores(this);
         jugadores.removeAll(jugadores);
         dbJugadores.verJugador(jugadores);
-        System.out.println(jugadores);
         adaptadorJugador = new AdaptadorJugador(jugadores,this,R.layout.item_jugador);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptadorJugador);

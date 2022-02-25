@@ -19,7 +19,9 @@ import com.example.juegodelasnaves.db.DbJugadores;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+//La clase Motor contiene todas las clases mencionadas en el proyecto, contiene variables como el
+//ArrayList<GameObject> objetosJuego en el que se almacenan los objetos del juego en sus posiciones
+//x e y
 public class Motor extends SurfaceView implements Runnable {
     volatile boolean isPlaying;
     private int tiempoColision;
@@ -65,7 +67,7 @@ public class Motor extends SurfaceView implements Runnable {
             idExplosion = soundPool.load(context, R.raw.impacto, 0);
 
     }
-
+//El método update(),draw(),control() mientras la variable booleana isPlaying sea true
     @Override
     public void run() {
         while (isPlaying) {
@@ -74,7 +76,13 @@ public class Motor extends SurfaceView implements Runnable {
             control();
         }
     }
-
+//El método update lo que hace es controlar el funcionamiento del juego, en el primer if vemos que
+    // si el contadorTiempoJuego es igual a 0 se para el juego, se crea un objeto Jugador que toma
+    // el valor nombre de la variable nJugador del MainActivity y el valor puntuación de la variable
+    //score, una vez obtenido ese objeto Jugador con los métodos creados de la clase DbJugadores,
+    // inserto ese objeto Jugador en la base de datos de sqlite.
+    //en el else controlo que si hay una colisión me genere un nuevo objeto NaveMarciana ademas de
+    //indicar que cuando haya una colisión reproduzca un sonido
     private void update() {
         --contadorTiempoJuego;
         if (contadorTiempoJuego == 0) {
@@ -92,7 +100,7 @@ public class Motor extends SurfaceView implements Runnable {
                 if ( tiempoColision == 0){
                     isColision = false;
                     objetosJuego.remove(1);
-                    objetosJuego.add(1, new NaveMarciana(context, new Random().nextInt(800)
+                    objetosJuego.add(1, new NaveMarciana(context, new Random().nextInt(anchoScreen)
                             , 100, 50, anchoScreen));
                 }
             }
@@ -123,7 +131,9 @@ public class Motor extends SurfaceView implements Runnable {
             }
         }
     }
-
+//En este metodo lo que hago es dibujar los textos de contadorTiempoJuego, contador de puntos y el
+// nombre del jugador, además pinto los objetos del ArrayList<GameObject> en sus posiciones x e y
+// correspondientes
     private void draw() {
         if (surfaceHolder.getSurface().isValid()) {
             canvas = surfaceHolder.lockCanvas();
@@ -144,7 +154,7 @@ public class Motor extends SurfaceView implements Runnable {
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }
-
+//En este método lo que hago es dormir el hilo del juego 17 ms
     private void control() {
         try {
             juegoHilo.sleep(17);
@@ -152,7 +162,8 @@ public class Motor extends SurfaceView implements Runnable {
             e.printStackTrace();
         }
     }
-
+    //Este método pausa el juego, pone la variable booleana isPlaying a false y luego hace un join
+    // al hilo del juego
     public void pause() {
         isPlaying = false;
         try {
@@ -160,14 +171,16 @@ public class Motor extends SurfaceView implements Runnable {
         } catch (InterruptedException e) {
         }
     }
-
+    //Este método sirve para reanudar el juego, pone la variable booleana isPlaying a true y la
+    // variable booleana isGameOver en false además crea un nuevo hilo y lo inicia
     public void resume() {
         isPlaying = true;
         isGameOver=false;
         juegoHilo = new Thread(this);
         juegoHilo.start();
     }
-
+//Aquí definimos las acciones que se van a realizar cuando pulsamos con nuestro ratón sobre la
+// naveJugador
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent) {
         NaveJugador naveJugador;
@@ -190,7 +203,7 @@ public class Motor extends SurfaceView implements Runnable {
                             Misil misil = new Misil(context);
                         misil.setX(naveJugador.getX() + naveJugador.getAncho() / 2);
                         misil.setY(naveJugador.getY() - misil.getAlto());
-                        misil.setVelocidad(35);
+                        misil.setVelocidad(50);
                         objetosJuego.add(misil);
                     }
                 }
